@@ -3,8 +3,14 @@ const jsonServer = require("json-server");
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const cors = require("cors");
-server.use(cors());
-// Make sure to use the default middleware
+const dotenv = require("dotenv");
+dotenv.config();
+const port = process.env.PORT | 7000;
+server.use(cors({
+    origin: 'https://todoapp-r3cxxc3gc-shailja026.vercel.app', 
+    credentials: true, 
+  }));
+
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
@@ -18,8 +24,8 @@ server.use(
 );
 server.use(router);
 // Listen to port
-server.listen(3000, () => {
- console.log("JSON Server is running");
+server.listen(port, () => {
+ console.log(`JSON Server is running on port ${port}`);
 });
 
 // Export the Server API
