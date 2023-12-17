@@ -8,7 +8,10 @@ dotenv.config();
 const port = process.env.PORT | 7000;
 server.use(cors({
     origin: '*', 
-    credentials: true, 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+   
   }));
 
 const middlewares = jsonServer.defaults();
