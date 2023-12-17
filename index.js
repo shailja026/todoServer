@@ -7,7 +7,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const port = process.env.PORT | 7000;
 server.use(cors({
-    origin: 'https://todoapp-r3cxxc3gc-shailja026.vercel.app', 
+    origin: '*', 
     credentials: true, 
   }));
 
